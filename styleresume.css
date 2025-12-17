@@ -1,0 +1,129 @@
+/* ------------------ Base ------------------ */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #1b1c1f;
+    color: #f5f5f5;
+    line-height: 1.65;
+}
+
+/* Centered content wrapper */
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* ------------------ Navigation ------------------ */
+
+nav {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+nav a {
+    color: #9bb9ff;
+    margin: 0 14px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+/* ------------------ Header ------------------ */
+
+header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+header img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+header h1 {
+    font-size: 2.35rem;
+    margin-bottom: 6px;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #c8c8c8;
+}
+
+/* ------------------ Sections ------------------ */
+
+section {
+    margin-bottom: 45px;
+}
+
+section h2 {
+    font-size: 1.65rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+/* Card-style box */
+.card {
+    background: #242528;
+    padding: 22px 26px;
+    border-radius: 12px;
+    border: 1px solid #2f3033;
+}
+
+/* ------------------ Lists / items ------------------ */
+
+/* Remove list numbers */
+ol, ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    background: #2d2f33;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #383a3d;
+}
+
+/* No hover effects on list items */
+
+/* ------------------ Footer ------------------ */
+
+footer {
+    margin-top: 60px;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #333;
+    color: #c8c8c8;
+}
+
+footer a {
+    color: #9bb9ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+/* ------------------ Divider ------------------ */
+
+.divider {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    border-bottom: 1px solid #2f2f35;
+    opacity: 0.6;
+}

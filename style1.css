@@ -1,0 +1,195 @@
+/* -------- Base Styles -------- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0f0f10;
+    color: #f2f2f2;
+    text-align: center; /* Used for centering the main-nav below */
+    line-height: 1.7;
+}
+
+/* Centered Main Layout */
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 50px; /* Add space before footer */
+}
+
+/* -------- 1. Top Navigation Bar (New & Improved) -------- */
+
+.main-nav {
+    /* Centering and Background */
+    background-color: #1a1a1d; /* Matches common card background */
+    padding: 20px 0; 
+    width: 100%;
+    
+    /* Using Flexbox for centering links */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Clear shadow for header */
+}
+
+.main-nav a {
+    color: #9db2ff; /* Readable link color */
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0 12px; /* Spacing around links */
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:visited { /* Ensure visited links are also readable */
+    color: #c9d4ff;
+}
+
+.main-nav .separator {
+    color: #444; /* Muted separator */
+    font-size: 1.1rem;
+    user-select: none;
+}
+
+/* --- Mobile Nav Optimization --- */
+@media (max-width: 600px) {
+    .main-nav {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+    .main-nav a {
+        padding: 8px 0;
+    }
+    .main-nav .separator {
+        display: none; /* Hide separators on small screens */
+    }
+}
+/* REMOVED: Old body > a, body > a:hover, body br rules */
+
+
+/* -------- Header -------- */
+header {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #b3b3b3;
+}
+
+/* -------- Card Style Sections -------- */
+
+.common {
+    background: #1a1a1d;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 900px;
+    margin: 0 auto 30px auto; /* Added margin-bottom for spacing */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    text-align: left;
+}
+/* Section headers inside cards */
+.common h2 {
+    margin-top: 0;
+}
+
+/* -------- Projects List -------- */
+
+ul.common {
+    list-style: none;
+    padding: 25px;
+    /* Removed redundant max-width/margin as it's already a .common element */
+}
+/* Ensure the link inside the project list item is styled */
+ul.common a {
+    color: #9db2ff;
+    text-decoration: none;
+}
+ul.common a:hover {
+    color: #c9d4ff;
+    text-decoration: underline;
+}
+
+ul.common li {
+    background: #26262a;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    transition: 0.2s ease;
+}
+
+ul.common li:hover {
+    background: #303036;
+    transform: translateX(4px);
+}
+
+
+/* -------- 2. Tableau Container Styling (Enhanced) -------- */
+.tableau-container {
+    /* Centering and Max Width */
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;       /* Increased vertical margin */
+    max-width: 1000px;      /* Matches the original embed width for optimal viewing */
+    width: 95%;             /* Flexible width up to max-width */
+    
+    /* Styling Edges */
+    border-radius: 16px; 
+    overflow: hidden;       /* CRITICAL: Clips the iframe corners */
+
+    /* Shadow/Border */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5); /* Deeper shadow */
+    border: 1px solid #3a3a3a; /* Darker, subtler border */
+}
+
+/* Ensure the iframe inside the container is responsive and uses the height set in the script */
+.tableau-container object {
+    width: 100%;
+    /* The height is generally best set via the original script/embed code for Tableau */
+    min-height: 800px; /* Use min-height to ensure the visual is tall enough */
+}
+
+/* -------- Footer -------- */
+
+footer {
+    margin-top: 70px;
+    padding: 40px 0;
+    border-top: 1px solid #2b2b2f;
+}
+/* ... rest of footer and contact styles remain the same ... */
+
+footer h2 {
+    margin-bottom: 12px;
+}
+
+footer a {
+    color: #a9c3ff;
+}
+
+footer a:hover {
+    color: #d4e0ff;
+}
+
+/* -------- Contact Section -------- */
+
+#contact {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+#contact p {
+    margin: 14px 0;
+}
+
+#contact i {
+    margin-right: 8px;
+    color: #9bb0ff;
+}

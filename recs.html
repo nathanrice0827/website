@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Books Reccomendations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main {
+        width: 100%;
+        max-width: 900px;
+         margin: 0 auto 24px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .main a {
+     text-decoration: none;
+    }
+
+    body {
+      background-color: #1f1f1f;
+      color: #eaeaea;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 720px;
+      padding: 40px;
+      background-color: #2a2a2a;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #bdbdbd;
+      margin-bottom: 32px;
+    }
+
+    ul {
+      list-style: none;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    li {
+      background-color: #333333;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    li:hover {
+      transform: translateY(-4px);
+      background-color: #3a3a3a;
+    }
+
+    .book-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    .book-desc {
+      font-size: 0.95rem;
+      color: #cfcfcf;
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #4da3ff;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 28px;
+      font-size: 0.8rem;
+      color: #9a9a9a;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <div class="main">   
+    <a href="#">Home</a> |
+    <a href="resume.html">Resume</a> |
+    <a href="blog.html">Blog</a> |
+    <a href="recs.html">Reccomended</a> | 
+    <a href="chess.html">Chess</a> 
+  </div> 
+
+
+
+  <div class="container">
+    <h1>Books for Self-Development</h1>
+    <p class="subtitle">
+      Thought-provoking reads that sharpen focus, discipline, and perspective.
+    </p>
+
+    <ul>
+      <li>
+        <div class="book-title">Atomic Habits — James Clear</div>
+        <div class="book-desc">
+          Teaches how tiny daily improvements compound into massive personal growth.
+        </div>
+        <a href="https://www.amazon.com/dp/0735211299" target="_blank">Find on Amazon</a>
+      </li>
+
+      <li>
+        <div class="book-title">Deep Work — Cal Newport</div>
+        <div class="book-desc">
+          Helps you build intense focus, reduce distractions, and produce meaningful work.
+        </div>
+        <a href="https://www.amazon.com/dp/1455586692" target="_blank">Find on Amazon</a>
+      </li>
+
+      <li>
+        <div class="book-title">The Psychology of Money — Morgan Housel</div>
+        <div class="book-desc">
+          Explains how mindset and behavior matter more than intelligence when it comes to money.
+        </div>
+        <a href="https://www.amazon.com/dp/0857197681" target="_blank">Find on Amazon</a>
+      </li>
+
+      <li>
+        <div class="book-title">Man’s Search for Meaning — Viktor E. Frankl</div>
+        <div class="book-desc">
+          A powerful exploration of purpose, resilience, and meaning in difficult circumstances.
+        </div>
+        <a href="https://www.amazon.com/dp/0807014273" target="_blank">Find on Amazon</a>
+      </li>
+
+      <li>
+        <div class="book-title">Thinking, Fast and Slow — Daniel Kahneman</div>
+        <div class="book-desc">
+          Improves decision-making by revealing how cognitive biases affect everyday thinking.
+        </div>
+        <a href="https://www.amazon.com/dp/0374533555" target="_blank">Find on Amazon</a>
+      </li>
+    </ul>
+
+    <footer>
+      © 2025 • Nathan Rice
+    </footer>
+  </div>
+
+</body>
+</html>

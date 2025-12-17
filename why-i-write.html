@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Why I Write Things Down</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* * --- 🎨 Enhanced Dark Theme Variables ---
+     * Defining colors as variables for easy modification
+     */
+    :root {
+      --color-background-dark: #121212; /* Deeper background */
+      --color-card-bg: #1e1e1e;       /* Slightly lighter card */
+      --color-text-light: #e0e0e0;     /* Soft white for main text */
+      --color-text-medium: #a0a0a0;    /* Muted color for secondary text/date */
+      --color-accent: #64ffda;        /* A subtle cyan/mint accent */
+      --color-shadow: rgba(0, 0, 0, 0.6);
+    }
+
+    /* --- General Reset & Body Styles --- */
+    body {
+      background-color: var(--color-background-dark);
+      color: var(--color-text-light);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7; /* Adjusted for better readability */
+      padding: 0 20px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh; /* Ensure full viewport height */
+      box-sizing: border-box;
+    }
+
+    /* --- Layout Container (Main Content Card) --- */
+    .container {
+      width: 100%;
+      max-width: 780px; /* Increased max-width for a more spacious feel */
+      background-color: var(--color-card-bg);
+      padding: 60px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      border-radius: 18px;
+      box-shadow: 0 25px 50px var(--color-shadow);
+      box-sizing: border-box;
+    }
+
+    /* --- Back Link --- */
+    .back {
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .back a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .back a:hover {
+      color: white; /* Brighter on hover */
+    }
+
+    /* --- Heading Styles --- */
+    h1 {
+      font-family: 'Merriweather', serif; /* Serif font for impact */
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      color: var(--color-text-light);
+    }
+
+    /* --- Date/Metadata --- */
+    .date {
+      font-size: 1rem;
+      color: var(--color-text-medium);
+      margin-bottom: 40px;
+      font-weight: 400;
+      border-bottom: 1px solid #333; /* Subtle separator */
+      padding-bottom: 15px;
+    }
+
+    /* --- Paragraph Styles --- */
+    p {
+      margin-bottom: 25px;
+      color: var(--color-text-light);
+      font-size: 1.15rem; /* Larger text for better reading experience */
+      font-weight: 300; /* Lighter weight for body copy */
+    }
+
+    /* --- Subtle Reading Progress Bar (Optional but nice touch) --- */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: var(--color-accent);
+      z-index: 1000;
+      transition: width 0.1s linear;
+    }
+
+    /* --- Responsive Adjustments for smaller screens --- */
+    @media (max-width: 800px) {
+      .container {
+        padding: 40px 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 0; /* Full width on mobile */
+        box-shadow: none;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      p {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+
+  <script>
+    // Add simple JS for the reading progress bar
+    document.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const progress = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+      document.querySelector('.progress-bar').style.width = progress + '%';
+    });
+  </script>
+</head>
+<body>
+  <div class="progress-bar"></div>
+
+  <div class="container">
+    <div class="back">
+      ← <a href="blog.html">Back to blog</a>
+    </div>
+
+    <h1>Why I Write Things Down</h1>
+    <div class="date">March 12, 2025</div>
+
+    <p>
+      Writing looks productive, but that’s not why I do it.
+      I write because vague thoughts fall apart when exposed to sentences.
+    </p>
+
+    <p>
+      Ideas feel complete until you attempt to explain them.
+      This page exists as a testing ground—if something survives writing,
+      it might be worth keeping.
+    </p>
+
+    <p>
+      Most of this isn’t advice. It’s orientation.
+      A way to stay aligned while building, learning, and deciding what matters.
+    </p>
+  </div>
+  
+  </body>
+</html>

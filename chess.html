@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chess</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------------- Base ---------------- */
+
+    *, *::before, *::after {
+     box-sizing: border-box;
+    }
+
+    /* ---------------- Base ---------------- */
+
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", system-ui, sans-serif;
+    background: #1b1c1f;
+    color: #f5f5f5;
+    line-height: 1.65;
+    padding-bottom: 20px;
+  
+    /* --- FIX START --- */
+    display: flex;
+    flex-direction: column; /* This stacks children (container, footer) vertically */
+    align-items: center; /* This centers the children horizontally */
+  /* --- FIX END --- */
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      padding: 50px 0 80px;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #c8c8c8;
+      max-width: 600px;
+      margin: 0 auto 50px;
+    }
+
+    /* ---------------- Chess Board ---------------- */
+
+ .chess-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack the items vertically */
+  align-items: center; /* Center the board and button */
+  margin-top: 40px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+
+  width: 360px;
+  aspect-ratio: 1 / 1;
+
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #2f3033;
+  background: #2a2b2f;
+  /* position: relative; removed, as it's no longer needed here */
+}
+
+#reset-button {
+  /* Positioning and Margin */
+  margin-top: 15px; 
+  
+  /* Appearance: Minimal Text Button */
+  background: #4a4d52;
+  color: #fff;
+  border: none;
+  padding: 8px 16px; /* Standard padding for text button */
+  border-radius: 6px; /* Slightly rounded corners */
+  font-size: 0.95rem; /* Smaller, minimal font size */
+  line-height: 1.2;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#reset-button:hover {
+  background: #5a5d62;
+  transform: translateY(-1px); /* Simple lift effect on hover */
+}
+    .square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    user-select: none;
+    aspect-ratio: 1 / 1;
+    line-height: 1;
+    }
+
+    .light {
+      background: #34363b;
+    }
+
+    .dark {
+      background: #2a2c30;
+    }
+
+    .square.selected {
+      outline: 2px solid #9bb9ff;
+      outline-offset: -2px;
+    }
+
+    .square.move {
+      background: #3a3d44;
+    }
+
+    /* ---------------- Footer ---------------- */
+
+    footer {
+      margin-top: 70px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #9a9a9a;
+    }
+
+    @media (max-width: 500px) {
+      .board {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+</head>
+
+<nav>
+
+    <a href="index.html">Home</a> |
+    <a href="resume.html">Resume</a> |
+    <a href="blog.html">Blog</a> |
+    <a href="recs.html">Reccomended</a> | 
+    <a href="#.html">Chess</a> 
+    <br><br>
+</nav>
+
+
+<body>
+
+  <div class="container">
+    <h1>Chess</h1>
+    <p class="subtitle">
+      I like chess because it rewards patience and long-term thinking.
+      There’s no hidden information, no randomness, no unnecessary complication, just the quality of decisions over time.
+    </p>
+
+   <div class="chess-wrapper">
+  <div id="board" class="board"></div>
+  <button id="reset-button" title="New Game">Retry</button> 
+</div>
+
+</div>
+<footer>
+  Fun, Isn't it? © 2025 Nathan Rice
+</footer>
+  </div>
+
+  <script>
+  /* ---------------- Init Game Engine ---------------- */
+  // 'Chess' comes from the library we added in the HTML head.
+  const game = new Chess(); 
+  const boardEl = document.getElementById("board");
+  // 1. VARIABLE DEFINITION ADDED HERE
+  const resetButton = document.getElementById("reset-button"); 
+
+  const pieceSymbols = {
+    r: "♜", n: "♞", b: "♝", q: "♛", k: "♚", p: "♟",
+    R: "♖", N: "♘", B: "♗", Q: "♕", K: "♔", P: "♙"
+  };
+
+  let selectedSquare = null; 
+
+  /* ---------------- Rendering ---------------- */
+  function render() {
+    boardEl.innerHTML = "";
+    const boardData = game.board(); 
+    const isKingInCheck = game.in_check(); // Check status for highlight
+
+    boardData.forEach((row, r) => {
+      row.forEach((cell, c) => {
+        const square = document.createElement("div");
+        // Check for 'in-check' class from previous style step
+        let squareClass = `square ${(r + c) % 2 === 0 ? "light" : "dark"}`;
+        
+        const squareId = toChessNotation(r, c);
+        square.dataset.id = squareId;
+
+        if (cell) {
+          const pieceChar = cell.color === 'w' ? cell.type.toUpperCase() : cell.type;
+          square.textContent = pieceSymbols[pieceChar];
+
+          // Apply 'in-check' class if King is in check
+          if (isKingInCheck && cell.type === 'k' && cell.color === game.turn()) {
+            squareClass += " in-check";
+          }
+        }
+        
+        square.className = squareClass;
+
+        if (selectedSquare === squareId) square.classList.add("selected");
+
+        square.addEventListener("click", () => onSquareClick(squareId));
+        boardEl.appendChild(square);
+      });
+    });
+
+    checkGameStatus();
+  }
+
+  /* ---------------- Game Status ---------------- */
+  // Function to check and alert game status (from previous steps)
+  function checkGameStatus() {
+    if (game.in_checkmate()) {
+      alert(`Game Over! Checkmate. ${game.turn() === 'b' ? 'White' : 'Black'} wins!`);
+    } else if (game.in_stalemate()) {
+      alert("Game Over! Stalemate (Draw).");
+    } else if (game.in_draw()) {
+      alert("Game Over! Draw.");
+    }
+  }
+
+  /* ---------------- Interaction ---------------- */
+  function onSquareClick(squareId) {
+    if (game.game_over()) return; // Don't allow moves after game ends
+
+    if (!selectedSquare) {
+      const piece = game.get(squareId);
+      if (piece && piece.color === game.turn()) {
+        selectedSquare = squareId;
+        highlight(squareId);
+      }
+      return;
+    }
+
+    const move = game.move({
+      from: selectedSquare,
+      to: squareId,
+      promotion: 'q' 
+    });
+
+    if (move === null) {
+      const piece = game.get(squareId);
+      if (piece && piece.color === game.turn()) {
+        selectedSquare = squareId;
+        highlight(squareId);
+      } else {
+        selectedSquare = null;
+        render();
+      }
+      return;
+    }
+
+    selectedSquare = null;
+    render();
+    
+    // Trigger Computer Response only if the game is not over
+    if (!game.game_over()) {
+      window.setTimeout(makeRandomMove, 250);
+    }
+  }
+
+  /* ---------------- Computer Opponent (Random) ---------------- */
+  function makeRandomMove() {
+    const possibleMoves = game.moves();
+
+    if (possibleMoves.length === 0) return;
+
+    const randomIdx = Math.floor(Math.random() * possibleMoves.length);
+    game.move(possibleMoves[randomIdx]);
+    
+    render();
+  }
+
+  /* ---------------- Game Control (RESET) ---------------- */
+  // 2. RESET FUNCTION DEFINITION ADDED HERE
+  function resetGame() {
+    game.reset(); // This is the crucial line that resets the chess board
+    selectedSquare = null;
+    render();
+  }
+
+  // 3. EVENT LISTENER ADDED HERE TO MAKE THE BUTTON WORK
+  resetButton.addEventListener('click', resetGame);
+
+
+  /* ---------------- Helpers ---------------- */
+  function highlight(squareId) {
+    // Remove old highlights
+    document.querySelectorAll(".square").forEach(s => s.classList.remove("selected"));
+    
+    // Add new highlight
+    const el = document.querySelector(`[data-id="${squareId}"]`);
+    if (el) el.classList.add("selected");
+  }
+
+  function toChessNotation(r, c) {
+    const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    const rank = 8 - r;
+    return files[c] + rank;
+  }
+
+  // Initial Draw
+  render();
+</script>
+</body>
+</html>

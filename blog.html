@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes & Thoughts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main {
+        width: 100%;
+        max-width: 900px;
+         margin: 0 auto 24px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .main a {
+     text-decoration: none;
+    }
+
+    body {
+      background-color: #1f1f1f;
+      color: #eaeaea;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 760px;
+      width: 100%;
+      background-color: #2a2a2a;
+      padding: 48px;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #bdbdbd;
+      font-size: 1rem;
+    }
+
+    .post-card {
+      display: block;
+      background-color: #333;
+      padding: 26px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .post-card:hover {
+      background-color: #3a3a3a;
+      transform: translateY(-3px);
+    }
+
+    .post-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    .post-date {
+      font-size: 0.85rem;
+      color: #9e9e9e;
+      margin-bottom: 12px;
+    }
+
+    .post-summary {
+      font-size: 1rem;
+      color: #d6d6d6;
+    }
+
+    footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #9a9a9a;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main">   
+    <a href="Index.html">Home</a> |
+    <a href="resume.html">Resume</a> |
+    <a href="#">Blog</a> |
+    <a href="recs.html">Reccomended</a> | 
+    <a href="chess.html">Chess</a> 
+  </div> 
+  <div class="container">
+    <header>
+      <h1>Notes & Thoughts</h1>
+      <p class="subtitle">Writing to express my thoughts about what I build, learn, and believe.</p>
+    </header>
+
+    <!-- Post -->
+    <a class="post-card" href="why-i-write.html">
+      <div class="post-title">Why I Write Things Down</div>
+      <div class="post-date">March 12, 2025</div>
+      <div class="post-summary">
+        Writing exposes weak thinking. This is less about publishing and more about
+        forcing clarity where it’s missing.
+      </div>
+    </a>
+
+    <div class="post-card">
+        <h3>More posts soon</h3>
+    </div>
+
+   
+    
+    <footer>
+      © 2025 • Nathan Rice
+    </footer>
+  </div>
+
+</body>
+</html>
